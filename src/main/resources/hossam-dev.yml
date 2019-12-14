@@ -1,0 +1,71 @@
+#https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+#regarding the 'off' issue of spring.main.banner-mode please have a look at https://github.com/spring-projects/spring-boot/commit/43b8e65eee7c23a7f7c3b61f8a436dc9cbfe5b96
+server: 
+  port: 8081
+  servlet:
+    context-path: /sd
+    
+app:
+  cs-ou-id: 1
+  cs-ou-queue-name: OUQUE_1121001000
+  ou-queue-name-prefix: OUQUE_
+  security:
+    basicauthentication:
+      realm-name: Oman MOJ Customer Service
+    max-inactive-interval: 1800
+  datasource:
+    url: jdbc:oracle:thin:@192.168.0.43:1521:oman
+    username: customerservice
+    password: oracle
+    pool-properties:
+      initial-size: 30
+      max-active: 10
+  ucm:
+    ip: 192.168.0.44
+    port: 4444
+    username: weblogic
+    password: welcome1 
+  lawaffairs:
+      email: noreply@informatique-eg.com
+  notification-channels: EMAIL_SMS
+  integration:
+    sms:
+      url: http://localhost:8082/sms-mockup/api/sms
+      username: blabla
+      password: blabla
+    rop:
+      url: http://192.168.0.45:8083/integration/rop/person
+      username: ropuser
+      password: "!Nt3gr@T10n"
+    notary:
+      db:
+        schema-name: OMANAUTH5
+        sak-user-tablename: SAK_USER 
+spring:
+  mail:
+   host: secure134.inmotionhosting.com
+   port: 465
+   username: noreply@informatique-eg.com
+   password: "#$NrPw567"
+   protocol: smtp
+   test-connection: false
+   properties:
+      mail:
+        smtp:
+          auth: true 
+          from: noreply@informatique-eg.com
+        debug: false
+logging:
+  level:
+    com:
+      informatique:
+        gov:
+          customerservice: debug
+    org:
+      springframework:
+        security: debug
+  
+
+
+
+              

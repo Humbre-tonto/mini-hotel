@@ -1,0 +1,3 @@
+app:
+  datasource:
+    lookup-name: jdbc/sd

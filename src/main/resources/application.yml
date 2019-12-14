@@ -1,0 +1,18 @@
+server: 
+  servlet:
+    path: /api
+spring:
+  main:
+    banner-mode: 'off'
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        transaction:
+          coordinator-class: jdbc
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        jdbc:
+          batch-size: 20
+  profiles:
+    active: dev

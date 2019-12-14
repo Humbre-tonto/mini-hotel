@@ -1,0 +1,64 @@
+server: 
+  servlet:
+    path: /api
+    
+app:
+  default-password-length: 6
+  cs-ou-id: 1
+  cs-ou-queue-name: OUQUE_1121001000
+  ou-queue-name-prefix: OUQUE_
+  security:
+    basicauthentication:
+      realm-name: Oman MOJ Customer Service
+    max-inactive-interval: 1800
+  datasource:
+    lookup-name: jdbc/cs
+  ucm:
+    ip: ucm
+    port: 4444
+    username: weblogic
+    password: P@ssw0rd    
+
+  lawaffairs:
+      email: noreply@informatique-eg.com
+  notification-channels: EMAIL_SMS
+  integration:
+    sms:
+      url: http://ipa:8888/sms-client/service/sms
+      username: admin
+      password: admin1
+    rop:
+      url:  http://192.168.0.45:8083/integration/rop/person
+      username: ropuser
+      password: "!Nt3gr@T10n"
+    notary:
+      db:
+        schema-name: OMANAUTH5
+        sak-user-tablename: SAK_USER 
+spring:
+  mail:
+   host: secure134.inmotionhosting.com
+   port: 465
+   username: noreply@informatique-eg.com
+   password: "#$NrPw567"
+   protocol: smtp
+   test-connection: false
+   properties:
+      mail:
+        smtp:
+          auth: true 
+          from: noreply@informatique-eg.com
+        debug: false
+logging:
+  level:
+    com:
+      informatique:
+        gov:
+          customerservice: error
+    org:
+      springframework:
+        security: error
+  
+
+
+    
