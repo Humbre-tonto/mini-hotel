@@ -25,8 +25,7 @@ import lombok.ToString;
 @EqualsAndHashCode(of = { "name" }, callSuper = false)
 
 @NamedEntityGraphs({
-		@NamedEntityGraph(name = "User.fat", attributeNodes = { @NamedAttributeNode(value = "role"),
-				@NamedAttributeNode(value = "credentials")}),
+		@NamedEntityGraph(name = "User.fat", attributeNodes = { @NamedAttributeNode(value = "role")}),
 		@NamedEntityGraph(name = "User.thin", attributeNodes = {}) })
 public class User extends DomainEntity<Integer> {
 
@@ -36,7 +35,7 @@ public class User extends DomainEntity<Integer> {
 	private static final long serialVersionUID = 1;
 
 	@Id
-	@SequenceGenerator(name = "UserSequence", sequenceName = "APP_USER_SEQ", allocationSize = 1)
+	@SequenceGenerator(name = "UserSequence", sequenceName = "USER_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSequence")
 	@Column(name = "id")
 	private Integer id;
