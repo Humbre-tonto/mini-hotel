@@ -1,6 +1,4 @@
-package com.informatique.gov.helpdesk.rest.dto;
-
-import com.informatique.gov.helpdesk.ShowDogVersion;
+package com.hotel.minihotel.rest.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +12,7 @@ public class UserDto implements UserModel<Integer> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 
 	private Integer id;
 	private String firstName;

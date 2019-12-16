@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.rest.dto;
+package com.hotel.minihotel.rest.dto;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonInclude;

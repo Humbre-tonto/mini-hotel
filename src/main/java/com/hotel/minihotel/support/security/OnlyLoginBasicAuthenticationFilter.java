@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.support.security;
+package com.hotel.minihotel.support.security;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;

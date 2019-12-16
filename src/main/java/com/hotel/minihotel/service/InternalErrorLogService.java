@@ -1,14 +1,14 @@
-package com.informatique.gov.helpdesk.service;
+package com.hotel.minihotel.service;
 
 
 import java.io.Serializable;
 
-import com.informatique.gov.helpdesk.domain.ErrorLog;
-import com.informatique.gov.helpdesk.exception.ShowDogException;
+import com.hotel.minihotel.domain.ErrorLog;
+import com.hotel.minihotel.exception.HotelException;
 
 public interface InternalErrorLogService extends Serializable {
 
-    ShowDogException log(ShowDogException customerServiceException);
+    HotelException log(HotelException hotelException);
 
 	void log(ErrorLog errorLog);
 

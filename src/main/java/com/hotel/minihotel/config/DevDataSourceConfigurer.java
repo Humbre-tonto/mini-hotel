@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.config;
+package com.hotel.minihotel.config;
 
 import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;

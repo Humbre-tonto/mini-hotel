@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.domain;
+package com.hotel.minihotel.domain;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,8 +12,6 @@ import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-
 import lombok.Data;
 
 @Entity
@@ -21,7 +19,7 @@ import lombok.Data;
 @Data
 public class ErrorLog implements Serializable {
 
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 
 	@Id
 	@SequenceGenerator(name = "ErrorLogSequence", sequenceName = "ERROR_LOG_SEQ", allocationSize = 1)

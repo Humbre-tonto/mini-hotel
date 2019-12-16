@@ -1,20 +1,21 @@
-package com.informatique.gov.helpdesk.service.impl;
+package com.hotel.minihotel.service.impl;
+
+import static org.springframework.util.Assert.notNull;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-import com.informatique.gov.helpdesk.domain.User;
-import com.informatique.gov.helpdesk.exception.HelpdeskInternalException;
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.persistence.repository.UserRepository;
-import com.informatique.gov.helpdesk.rest.dto.UserDto;
-import com.informatique.gov.helpdesk.service.InternalUserService;
-import com.informatique.gov.helpdesk.service.UserService;
-import com.informatique.gov.helpdesk.support.modelmapper.UserMapper;
-import static org.springframework.util.Assert.notNull;
+import com.hotel.minihotel.domain.User;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.exception.HotelInternalException;
+import com.hotel.minihotel.persistence.repository.UserRepository;
+import com.hotel.minihotel.rest.dto.UserDto;
+import com.hotel.minihotel.service.InternalUserService;
+import com.hotel.minihotel.service.UserService;
+import com.hotel.minihotel.support.modelmapper.UserMapper;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -24,37 +25,37 @@ public class UserServiceImpl implements InternalUserService, UserService {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 	private UserRepository userRepository;
 	private UserMapper userMapper;
 
 	@Override
 	@Transactional(rollbackFor = Exception.class, readOnly = true)
-	public User getByLoginName(String loginName) throws ShowDogException {
+	public User getByLoginName(String loginName) throws HotelException {
 		User user = null;
 		try {
 
-			user = userRepository.findByLoginNameIgnoreCase(loginName);
+			user = userRepository.findByName(loginName);
 
 		} catch (Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		return user;
 	}
 
 	@Override
-	public List<User> getAll() throws ShowDogException {
+	public List<User> getAll() throws HotelException {
 		List<User> users = null;
 		try {
 			users = userRepository.findAll();
 		} catch (Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		return users;
 	}
 
 	@Override
-	public UserDto register(UserDto userDto) throws ShowDogException {
+	public UserDto register(UserDto userDto) throws HotelException {
 		UserDto savedDto = null;
 
 		try {
@@ -67,26 +68,26 @@ public class UserServiceImpl implements InternalUserService, UserService {
 			savedDto = userMapper.toDto(entiry);
 
 		} catch (Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 
 		return savedDto;
 	}
 
 	@Override
-	public UserDto getById(Integer id) throws ShowDogException {
+	public UserDto getById(Integer id) throws HotelException {
 		UserDto users = null;
 		try {
 			users = userMapper.toDto(userRepository.findById(id).get());
 			
 		} catch (Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		return users;
 	}
 
 	@Override
-	public UserDto updateById(Integer id, UserDto updatedUser) throws ShowDogException {
+	public UserDto updateById(Integer id, UserDto updatedUser) throws HotelException {
 		UserDto savedDto = null;
 
 		try {
@@ -95,10 +96,6 @@ public class UserServiceImpl implements InternalUserService, UserService {
 			
 			User entity = userMapper.toEntity(updatedUser);
 			
-			oldUser.setFirstName(entity.getFirstName());
-			oldUser.setLastName(entity.getLastName());
-			oldUser.setMobile(entity.getMobile());
-			oldUser.setEmail(entity.getEmail());
 			
 			entity = userRepository.save(oldUser);
 
@@ -106,7 +103,7 @@ public class UserServiceImpl implements InternalUserService, UserService {
 			
 
 		} catch (Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 
 		return savedDto;

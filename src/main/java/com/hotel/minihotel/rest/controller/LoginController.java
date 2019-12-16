@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.rest.controller;
+package com.hotel.minihotel.rest.controller;
 
 import java.io.Serializable;
 
@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.rest.handler.LoginHandler;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.rest.handler.LoginHandler;
 
 import lombok.AllArgsConstructor;
 
@@ -22,11 +21,11 @@ public class LoginController implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;	
+	private static final long serialVersionUID = 1;	
 	private LoginHandler loginHandler;
 	
 	@GetMapping
-	public ResponseEntity<?> login(HttpSession session) throws ShowDogException {
+	public ResponseEntity<?> login(HttpSession session) throws HotelException {
 		return loginHandler.getUserDetails(session);
 	}
 }

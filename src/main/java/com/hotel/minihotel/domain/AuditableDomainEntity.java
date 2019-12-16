@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.domain;
+package com.hotel.minihotel.domain;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,8 +10,6 @@ import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-
-import com.informatique.gov.helpdesk.ShowDogVersion;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,7 +24,7 @@ public abstract class AuditableDomainEntity<ID extends Serializable, T extends S
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 
 	@CreatedBy
 	@Column(name = "CREATE_BY", updatable = false)

@@ -1,15 +1,15 @@
-package com.informatique.gov.helpdesk.rest.handler.impl;
+package com.hotel.minihotel.rest.handler.impl;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.exception.HelpdeskInternalException;
-import com.informatique.gov.helpdesk.rest.dto.UserDetailsDto;
-import com.informatique.gov.helpdesk.rest.handler.LoginHandler;
-import com.informatique.gov.helpdesk.service.InternalSecurityService;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.exception.HotelInternalException;
+import com.hotel.minihotel.rest.dto.UserDetailsDto;
+import com.hotel.minihotel.rest.handler.LoginHandler;
+import com.hotel.minihotel.service.InternalSecurityService;
 
 import lombok.AllArgsConstructor;
 
@@ -25,17 +25,17 @@ public class LoginHandlerImpl implements LoginHandler{
 	private InternalSecurityService securityService;
 	
 	@Override
-	public ResponseEntity<UserDetailsDto> getUserDetails(HttpSession session) throws ShowDogException {
+	public ResponseEntity<UserDetailsDto> getUserDetails(HttpSession session) throws HotelException {
 		
 		ResponseEntity<UserDetailsDto> response = null;
 		
 		try {
 			UserDetailsDto userDetailsDto = securityService.getUserDetails(session);
 			response = ResponseEntity.ok(userDetailsDto);
-		}catch (ShowDogException e) {
+		}catch (HotelException e) {
 			throw e;
 		} catch (Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		return response;		
 	}

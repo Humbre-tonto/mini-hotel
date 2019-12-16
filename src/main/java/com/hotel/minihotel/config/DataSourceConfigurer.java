@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.config;
+package com.hotel.minihotel.config;
 
 import javax.sql.DataSource;
 

@@ -1,1 +1,1 @@
-org.springframework.boot.env.EnvironmentPostProcessor=com.informatique.gov.helpdesk.support.postprocessor.DatabasePropertySourceEnvironmentPostProcessor
+org.springframework.boot.env.EnvironmentPostProcessor=com.hotel.minihotel.support.postprocessor.DatabasePropertySourceEnvironmentPostProcessor

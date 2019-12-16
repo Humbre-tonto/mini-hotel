@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.support.postprocessor;
+package com.hotel.minihotel.support.postprocessor;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

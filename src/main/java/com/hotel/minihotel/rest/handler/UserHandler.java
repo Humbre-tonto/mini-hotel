@@ -1,22 +1,22 @@
-package com.informatique.gov.helpdesk.rest.handler;
+package com.hotel.minihotel.rest.handler;
 
 import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.rest.dto.UserDto;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.rest.dto.UserDto;
 
 public interface UserHandler extends Serializable {
 
 	// ResponseEntity<UserDetailsDto> getUserDetails(HttpSession session) throws
-	// ShowDogException;
-	ResponseEntity<List<?>> getAll() throws ShowDogException;
+	// HotelException;
+	ResponseEntity<List<?>> getAll() throws HotelException;
 
-	ResponseEntity<?> register(UserDto user) throws ShowDogException;
+	ResponseEntity<?> register(UserDto user) throws HotelException;
 
-	ResponseEntity<?> getById(Integer id) throws ShowDogException;
+	ResponseEntity<?> getById(Integer id) throws HotelException;
 
-	ResponseEntity<?> updateById(Integer id, UserDto updatedUser) throws ShowDogException;;
+	ResponseEntity<?> updateById(Integer id, UserDto updatedUser) throws HotelException;;
 }

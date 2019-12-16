@@ -1,6 +1,7 @@
-package com.informatique.gov.helpdesk.service.impl;
+package com.hotel.minihotel.service.impl;
 
 import static org.springframework.util.Assert.notNull;
+
 import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
@@ -15,17 +16,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.informatique.gov.helpdesk.domain.User;
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.exception.HelpdeskInternalException;
-import com.informatique.gov.helpdesk.persistence.repository.UserRepository;
-import com.informatique.gov.helpdesk.rest.dto.AuthenticationTokenDto;
-import com.informatique.gov.helpdesk.rest.dto.UserDetailsDto;
-import com.informatique.gov.helpdesk.service.InternalSecurityService;
-import com.informatique.gov.helpdesk.support.dataenum.UserRoleEnum;
-import com.informatique.gov.helpdesk.support.security.AuthenticationToken;
-import com.informatique.gov.helpdesk.support.security.HelpdeskGrantedAuthority;
-import com.informatique.gov.helpdesk.support.security.HelpdeskUserDetails;
+import com.hotel.minihotel.domain.User;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.exception.HotelInternalException;
+import com.hotel.minihotel.persistence.repository.UserRepository;
+import com.hotel.minihotel.rest.dto.AuthenticationTokenDto;
+import com.hotel.minihotel.rest.dto.UserDetailsDto;
+import com.hotel.minihotel.service.InternalSecurityService;
+import com.hotel.minihotel.support.dataenum.UserRoleEnum;
+import com.hotel.minihotel.support.security.AuthenticationToken;
+import com.hotel.minihotel.support.security.HotelGrantedAuthority;
+import com.hotel.minihotel.support.security.HotelUserDetails;
 
 import lombok.AllArgsConstructor;
 
@@ -44,53 +45,53 @@ public class SecurityServiceImpl implements InternalSecurityService{
 	private UserRepository userRepository;
 	
 	@Override
-	public UserDetailsDto getUserDetails(HttpSession session) throws ShowDogException {
+	public UserDetailsDto getUserDetails(HttpSession session) throws HotelException {
 		UserDetailsDto userDetailsDto = null;
 		try {
 			Principal principal = SecurityContextHolder.getContext().getAuthentication();
 			UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken)principal;
-			HelpdeskUserDetails userDetails = (HelpdeskUserDetails)authenticationToken.getDetails();
+			HotelUserDetails userDetails = (HotelUserDetails)authenticationToken.getDetails();
 			userDetails.setToken(new AuthenticationToken(session.getId(), Integer.parseInt(environment.getRequiredProperty("app.security.max-inactive-interval"))));
 			userDetailsDto = toUserDetailsDto(userDetails);
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		
 		return userDetailsDto;
 	}
 	
 	@Override
-	public boolean hasRole(UserRoleEnum userRoleEnum) throws ShowDogException {
+	public boolean hasRole(UserRoleEnum userRoleEnum) throws HotelException {
 		try {
 			Optional<Authentication> authentication = getAuthentication();
 			return authentication.map(auth -> auth.getAuthorities().stream().anyMatch(authority -> authority.getAuthority().equals(userRoleEnum.getCode()))).orElse(false);
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 	}
 	
 	@Override
-	public boolean hasRole(String userLoginName, UserRoleEnum userRoleEnum) throws ShowDogException {
+	public boolean hasRole(String userLoginName, UserRoleEnum userRoleEnum) throws HotelException {
 		try {
 			String roleCode = userRepository.findRoleCodeByLoginName(userLoginName).orElse(null);
 			return roleCode != null && roleCode.equals(userRoleEnum.getCode());
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 	}
 	
 	@Override
-	public boolean hasAnyRole(List<HelpdeskGrantedAuthority> authorities) throws ShowDogException {
+	public boolean hasAnyRole(List<HotelGrantedAuthority> authorities) throws HotelException {
 		try {
 			Optional<Authentication> authentication = getAuthentication();
 			return authentication.map(auth -> auth.getAuthorities().stream().anyMatch(authorities::contains)).orElse(false);
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 	}
 	
 	@Override
-	public boolean hasAnyRole(UserRoleEnum... userRoleEnums) throws ShowDogException {
+	public boolean hasAnyRole(UserRoleEnum... userRoleEnums) throws HotelException {
 		try {
 			Optional<Authentication> authenticationOpt = getAuthentication();
 			if(authenticationOpt.isPresent()) {
@@ -109,46 +110,46 @@ public class SecurityServiceImpl implements InternalSecurityService{
 			return false;
 			
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 	}
 	
 	@Override
-	public UserDetailsDto getUserDetails() throws ShowDogException {
+	public UserDetailsDto getUserDetails() throws HotelException {
 		UserDetailsDto userDetailsDto = null;
 		try {
 			Principal principal = SecurityContextHolder.getContext().getAuthentication();
 			UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken)principal;
-			HelpdeskUserDetails userDetails = (HelpdeskUserDetails)authenticationToken.getDetails();
+			HotelUserDetails userDetails = (HotelUserDetails)authenticationToken.getDetails();
 			userDetailsDto = toUserDetailsDto(userDetails);
 			
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		
 		return userDetailsDto;
 	}
 	
 	@Override
-	public Optional<Authentication> getAuthentication() throws ShowDogException {
+	public Optional<Authentication> getAuthentication() throws HotelException {
 		Optional<Authentication> authentication = Optional.empty();
 		try {
 			authentication = Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication());
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		
 		return authentication;
 	}
 	
 	@Override
-	public String getPrincipal() throws ShowDogException{
+	public String getPrincipal() throws HotelException{
 		String username = null;
 		try {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			username = authentication.getPrincipal().toString();
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		
 		return username;
@@ -162,21 +163,21 @@ public class SecurityServiceImpl implements InternalSecurityService{
 	
 	
 	@Override
-	public User getUser() throws ShowDogException {
+	public User getUser() throws HotelException {
 		User user = null;
 		try {
 			String loginName = getPrincipal();
-			user = userRepository.findByLoginNameIgnoreCase(loginName);
-		}catch(ShowDogException e) {
+			user = userRepository.findByName(loginName);
+		}catch(HotelException e) {
 			throw e;
 		}catch(Exception e) {
-			throw new HelpdeskInternalException(e);
+			throw new HotelInternalException(e);
 		}
 		
 		return user;
 	}
 	
-	private UserDetailsDto toUserDetailsDto(HelpdeskUserDetails userDetails) {
+	private UserDetailsDto toUserDetailsDto(HotelUserDetails userDetails) {
 		
 		notNull(userDetails, "userDetails must be set");
 		

@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.domain;
+package com.hotel.minihotel.domain;
 
 import java.io.Serializable;
 

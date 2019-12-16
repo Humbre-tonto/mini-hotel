@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.support.modelmapper;
+package com.hotel.minihotel.support.modelmapper;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,16 +16,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-import com.informatique.gov.helpdesk.domain.DomainModel;
-import com.informatique.gov.helpdesk.rest.dto.UserModel;
+import com.hotel.minihotel.domain.DomainModel;
+import com.hotel.minihotel.rest.dto.UserModel;
 
 public abstract class AbstractModelMapper<E extends DomainModel<ID>, D extends UserModel<ID>, ID extends Serializable> implements ModelMapper<E, D, ID>{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 	//private final static Logger logger = LogManager.getLogger(AbstractModelMapper.class);
 	
 	

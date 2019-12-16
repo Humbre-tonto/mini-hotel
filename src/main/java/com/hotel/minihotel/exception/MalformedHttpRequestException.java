@@ -1,19 +1,17 @@
-package com.informatique.gov.helpdesk.exception;
+package com.hotel.minihotel.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class MalformedHttpRequestException extends ShowDogException {
+public class MalformedHttpRequestException extends HotelException {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID =1;
 
 	public MalformedHttpRequestException(String details) {
-		super(ShowDogExceptionEnum.MAL_FORMED_HTTP_REQUEST_EXCEPTION, details);
+		super(HotelExceptionEnum.MAL_FORMED_HTTP_REQUEST_EXCEPTION, details);
 	}
 }

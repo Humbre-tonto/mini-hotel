@@ -1,15 +1,15 @@
-package com.informatique.gov.helpdesk.service;
+package com.hotel.minihotel.service;
 
 import java.io.Serializable;
 import java.util.List;
 
-import com.informatique.gov.helpdesk.domain.User;
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.rest.dto.UserDto;
+import com.hotel.minihotel.domain.User;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.rest.dto.UserDto;
 
 public interface UserService extends Serializable {
-	List<User> getAll() throws ShowDogException;
-	UserDto register(UserDto userDto) throws ShowDogException;
-	UserDto getById(Integer id) throws ShowDogException;
-	UserDto updateById(Integer id, UserDto updatedUser) throws ShowDogException;
+	List<User> getAll() throws HotelException;
+	UserDto register(UserDto userDto) throws HotelException;
+	UserDto getById(Integer id) throws HotelException;
+	UserDto updateById(Integer id, UserDto updatedUser) throws HotelException;
 }

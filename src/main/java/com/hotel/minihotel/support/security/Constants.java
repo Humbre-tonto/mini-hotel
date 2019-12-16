@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.support.security;
+package com.hotel.minihotel.support.security;
 
 public class Constants {
 	

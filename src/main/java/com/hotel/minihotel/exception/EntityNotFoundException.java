@@ -1,28 +1,26 @@
-package com.informatique.gov.helpdesk.exception;
+package com.hotel.minihotel.exception;
 
 import java.io.Serializable;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-
 @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-public class EntityNotFoundException extends HelpdeskInternalException{
+public class EntityNotFoundException extends HotelInternalException{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 	
 	
 	
 	public EntityNotFoundException(String type, Serializable id) {
-		super(ShowDogExceptionEnum.ENTITY_NOT_FOUND_EXCEPTION, type, id);
+		super(HotelExceptionEnum.ENTITY_NOT_FOUND_EXCEPTION, type, id);
 	}
 	
 	public EntityNotFoundException(String ticketSerial, String type, Serializable id) {
-		super(ShowDogExceptionEnum.ENTITY_NOT_FOUND_EXCEPTION, type, id);
+		super(HotelExceptionEnum.ENTITY_NOT_FOUND_EXCEPTION, type, id);
 		this.ticketSerial = ticketSerial;
 	}
 }

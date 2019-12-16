@@ -1,8 +1,6 @@
-package com.informatique.gov.helpdesk.rest.dto;
+package com.hotel.minihotel.rest.dto;
 
 
-
-import com.informatique.gov.helpdesk.ShowDogVersion;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +14,7 @@ public class RoleDto implements UserModel<Byte> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 	private Byte id;
 	private String code;
 	private String englishName;

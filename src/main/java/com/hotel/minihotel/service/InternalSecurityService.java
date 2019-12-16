@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.service;
+package com.hotel.minihotel.service;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,32 +8,32 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 
-import com.informatique.gov.helpdesk.domain.User;
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.rest.dto.UserDetailsDto;
-import com.informatique.gov.helpdesk.support.dataenum.UserRoleEnum;
-import com.informatique.gov.helpdesk.support.security.HelpdeskGrantedAuthority;
+import com.hotel.minihotel.domain.User;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.rest.dto.UserDetailsDto;
+import com.hotel.minihotel.support.dataenum.UserRoleEnum;
+import com.hotel.minihotel.support.security.HotelGrantedAuthority;
 
 
 public interface InternalSecurityService extends Serializable{
 
-	UserDetailsDto getUserDetails(HttpSession session) throws ShowDogException;
+	UserDetailsDto getUserDetails(HttpSession session) throws HotelException;
 
-	String getPrincipal() throws ShowDogException;
+	String getPrincipal() throws HotelException;
 
-	UserDetailsDto getUserDetails() throws ShowDogException;
+	UserDetailsDto getUserDetails() throws HotelException;
 
-	User getUser() throws ShowDogException;
+	User getUser() throws HotelException;
 
-	Optional<Authentication> getAuthentication() throws ShowDogException;
+	Optional<Authentication> getAuthentication() throws HotelException;
 
-	boolean hasRole(UserRoleEnum userRoleEnum) throws ShowDogException;
+	boolean hasRole(UserRoleEnum userRoleEnum) throws HotelException;
 
-	boolean hasAnyRole(List<HelpdeskGrantedAuthority> authorities) throws ShowDogException;
+	boolean hasAnyRole(List<HotelGrantedAuthority> authorities) throws HotelException;
 
-	boolean hasAnyRole(UserRoleEnum... userRoleEnum) throws ShowDogException;
+	boolean hasAnyRole(UserRoleEnum... userRoleEnum) throws HotelException;
 
-	boolean hasRole(String userLoginName, UserRoleEnum userRoleEnum) throws ShowDogException;
+	boolean hasRole(String userLoginName, UserRoleEnum userRoleEnum) throws HotelException;
 
 	boolean isUserLoggedIn();
 

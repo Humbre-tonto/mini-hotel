@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.config;
+package com.hotel.minihotel.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;;
 @Configuration
 @EnableWebMvc
 @EnableSwagger2
-@ComponentScan(basePackages = "com.informatique.gov.helpdesk")
+@ComponentScan(basePackages = "com.hotel.minihotel")
 public class WebConfigurer implements WebMvcConfigurer {
 
 	@Bean

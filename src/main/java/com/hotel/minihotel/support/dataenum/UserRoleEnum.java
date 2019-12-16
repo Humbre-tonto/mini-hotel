@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.support.dataenum;
+package com.hotel.minihotel.support.dataenum;
 
 import lombok.Getter;
 

@@ -1,10 +1,9 @@
-package com.informatique.gov.helpdesk.support.modelmapper;
+package com.hotel.minihotel.support.modelmapper;
 
 import org.springframework.stereotype.Component;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-import com.informatique.gov.helpdesk.domain.Role;
-import com.informatique.gov.helpdesk.rest.dto.RoleDto;
+import com.hotel.minihotel.domain.Role;
+import com.hotel.minihotel.rest.dto.RoleDto;
 
 
 @Component
@@ -13,7 +12,7 @@ public class RoleMapper extends AbstractModelMapper<Role, RoleDto, Byte> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 
 	@Override
 	public RoleDto toDto(Role entity) {

@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.config;
+package com.hotel.minihotel.config;
 
 import java.util.Optional;
 import java.util.Properties;
@@ -18,17 +18,17 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.service.InternalSecurityService;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.service.InternalSecurityService;
 
 
 @Configuration
-@EnableJpaRepositories(basePackages = { "com.informatique.gov.helpdesk.persistence.repository" })
+@EnableJpaRepositories(basePackages = { "com.hotel.minihotel.persistence.repository" })
 @EnableTransactionManagement
 @EnableJpaAuditing(auditorAwareRef = "securityAuditor")
 public class PersistenceContextConfigurer {
 	
-	private static final String[] ENTITY_PACKAGES = { "com.informatique.gov.helpdesk.domain" };
+	private static final String[] ENTITY_PACKAGES = { "com.hotel.minihotel.domain" };
 	
 	
 	
@@ -65,7 +65,7 @@ public class PersistenceContextConfigurer {
 		return () -> {
 			try {
 				return Optional.ofNullable(securityService.getPrincipal());
-			} catch (ShowDogException e) {
+			} catch (HotelException e) {
 				return Optional.empty();
 			}
 		};

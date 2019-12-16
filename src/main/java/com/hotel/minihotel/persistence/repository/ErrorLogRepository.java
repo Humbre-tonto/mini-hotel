@@ -1,10 +1,10 @@
-package com.informatique.gov.helpdesk.persistence.repository;
+package com.hotel.minihotel.persistence.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.informatique.gov.helpdesk.domain.ErrorLog;
+import com.hotel.minihotel.domain.ErrorLog;
 
 
 

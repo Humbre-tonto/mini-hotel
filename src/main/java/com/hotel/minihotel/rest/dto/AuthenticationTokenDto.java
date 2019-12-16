@@ -1,8 +1,6 @@
-package com.informatique.gov.helpdesk.rest.dto;
+package com.hotel.minihotel.rest.dto;
 
 import java.io.Serializable;
-
-import com.informatique.gov.helpdesk.ShowDogVersion;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +11,7 @@ public class AuthenticationTokenDto implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 	
 	@Getter
 	private final String value;

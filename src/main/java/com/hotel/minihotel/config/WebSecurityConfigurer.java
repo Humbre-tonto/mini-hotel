@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.config;
+package com.hotel.minihotel.config;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,10 +33,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.informatique.gov.helpdesk.support.security.Constants;
-import com.informatique.gov.helpdesk.support.security.HelpdeskAuthenticationProvider;
-import com.informatique.gov.helpdesk.support.security.OnlyLoginBasicAuthenticationFilter;
-import com.informatique.gov.helpdesk.support.security.RestAuthenticationEntryPoint;
+import com.hotel.minihotel.support.security.Constants;
+import com.hotel.minihotel.support.security.HotelAuthenticationProvider;
+import com.hotel.minihotel.support.security.OnlyLoginBasicAuthenticationFilter;
+import com.hotel.minihotel.support.security.RestAuthenticationEntryPoint;
 
 @Profile("!dev")
 @EnableWebSecurity
@@ -48,7 +48,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	private SessionRepositoryFilter<?> sessionRepositoryFilter;
 	
 	@Autowired
-	private HelpdeskAuthenticationProvider helpdeskAuthenticationProvider;
+	private HotelAuthenticationProvider hotelAuthenticationProvider;
 	
 	@Autowired
 	private FindByIndexNameSessionRepository<? extends ExpiringSession> findByIndexNameSessionRepository;
@@ -122,7 +122,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(helpdeskAuthenticationProvider);
+		auth.authenticationProvider(hotelAuthenticationProvider);
 	}
 
 //	private CsrfTokenRepository csrfTokenRepository() {

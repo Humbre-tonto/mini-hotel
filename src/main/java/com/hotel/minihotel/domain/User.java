@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.domain;
+package com.hotel.minihotel.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,24 +11,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedEntityGraphs;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.NaturalId;
-
-import com.informatique.gov.helpdesk.ShowDogVersion;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
-@Table(name = "APP_USER")
+@Table(name = "USERS")
 @Data
-@ToString(of = { "id", "loginName" })
-@EqualsAndHashCode(of = { "loginName" }, callSuper = false)
+@ToString(of = { "id", "name" })
+@EqualsAndHashCode(of = { "name" }, callSuper = false)
 
 @NamedEntityGraphs({
 		@NamedEntityGraph(name = "User.fat", attributeNodes = { @NamedAttributeNode(value = "role"),
@@ -39,7 +33,7 @@ public class User extends DomainEntity<Integer> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 
 	@Id
 	@SequenceGenerator(name = "UserSequence", sequenceName = "APP_USER_SEQ", allocationSize = 1)
@@ -47,33 +41,14 @@ public class User extends DomainEntity<Integer> {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "FIRST_NAME")
-	private String firstName;
+	@Column(name = "NAME")
+	private String name;
 
-	@Column(name = "LAST_NAME")
-	private String LastName;
-
-	@Column(name = "MOBILE")
-	private String mobile;
+	@Column(name="PASSWORD")
+	private String password;
 	
-	@Column(name = "EMAIL")
-	private String email;
-	
-	@NaturalId
-	@Column(name = "LOGIN_NAME")
-	private String loginName;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ROLE_ID")
 	private Role role;
 
-	@OneToOne(mappedBy = "user")
-	@PrimaryKeyJoinColumn
-	private UserCredentials credentials;
-	
-//	@OneToOne(fetch = FetchType.LAZY)
-//	private Pet pet;
-//	
-
-	
 }

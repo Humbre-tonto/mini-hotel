@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.support.modelmapper;
+package com.hotel.minihotel.support.modelmapper;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Set;
 
 import org.springframework.data.domain.Page;
 
-import com.informatique.gov.helpdesk.domain.DomainModel;
-import com.informatique.gov.helpdesk.rest.dto.UserModel;
+import com.hotel.minihotel.domain.DomainModel;
+import com.hotel.minihotel.rest.dto.UserModel;
 
 
 public interface ModelMapper<E extends DomainModel<ID>, D extends UserModel<ID>, ID extends Serializable> extends Serializable{

@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.rest.handler;
+package com.hotel.minihotel.rest.handler;
 
 import java.io.Serializable;
 
@@ -6,12 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.rest.dto.UserDetailsDto;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.rest.dto.UserDetailsDto;
 
 
 public interface LoginHandler extends Serializable{
 
-	ResponseEntity<UserDetailsDto> getUserDetails(HttpSession session) throws ShowDogException;
+	ResponseEntity<UserDetailsDto> getUserDetails(HttpSession session) throws HotelException;
 
 }

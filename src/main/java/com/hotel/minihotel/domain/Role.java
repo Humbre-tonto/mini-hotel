@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.domain;
+package com.hotel.minihotel.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,8 +6,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
-
-import com.informatique.gov.helpdesk.ShowDogVersion;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,7 +21,7 @@ public class Role extends DomainEntity<Byte> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+	private static final long serialVersionUID = 1;
 
 	@Id
     @Column(name = "id")

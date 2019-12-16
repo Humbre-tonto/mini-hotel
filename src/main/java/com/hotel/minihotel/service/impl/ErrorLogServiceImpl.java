@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk.service.impl;
+package com.hotel.minihotel.service.impl;
 
 
 import java.util.Date;
@@ -9,12 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.informatique.gov.helpdesk.ShowDogVersion;
-import com.informatique.gov.helpdesk.domain.ErrorLog;
-import com.informatique.gov.helpdesk.exception.ShowDogException;
-import com.informatique.gov.helpdesk.persistence.repository.ErrorLogRepository;
-import com.informatique.gov.helpdesk.service.InternalErrorLogService;
-import com.informatique.gov.helpdesk.service.InternalSecurityService;
+import com.hotel.minihotel.domain.ErrorLog;
+import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.persistence.repository.ErrorLogRepository;
+import com.hotel.minihotel.service.InternalErrorLogService;
+import com.hotel.minihotel.service.InternalSecurityService;
 
 import lombok.AllArgsConstructor;
 
@@ -22,7 +21,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ErrorLogServiceImpl implements InternalErrorLogService {
 
-    private static final long serialVersionUID = ShowDogVersion.serialVersionUID;
+    private static final long serialVersionUID = 1;
     private final Logger logger = LoggerFactory.getLogger(ErrorLogServiceImpl.class);
     private InternalSecurityService securityService;
     private ErrorLogRepository errorLogRepository;
@@ -30,7 +29,7 @@ public class ErrorLogServiceImpl implements InternalErrorLogService {
 
     @Override
     @Transactional(propagation= Propagation.REQUIRES_NEW)
-    public ShowDogException log(ShowDogException helpdeskException){
+    public HotelException log(HotelException helpdeskException){
         ErrorLog errorLog = null;
         Long errorId = null;
 

@@ -1,4 +1,4 @@
-package com.informatique.gov.helpdesk;
+package com.hotel.minihotel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -10,15 +10,15 @@ import org.springframework.web.WebApplicationInitializer;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {QuartzAutoConfiguration.class})
-public class ShowdogApp extends SpringBootServletInitializer  implements WebApplicationInitializer 
+public class MiniHotelApp extends SpringBootServletInitializer  implements WebApplicationInitializer 
 {
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(ShowdogApp.class);
+        return application.sources(MiniHotelApp.class);
     }
 	
     public static void main( String[] args )
     {
-        SpringApplication.run(ShowdogApp.class, args);
+        SpringApplication.run(MiniHotelApp.class, args);
     }
 }
