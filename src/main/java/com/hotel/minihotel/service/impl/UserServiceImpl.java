@@ -108,4 +108,24 @@ public class UserServiceImpl implements InternalUserService, UserService {
 
 		return savedDto;
 	}
+
+	@Override
+	public void deleteById(Integer id) throws HotelInternalException {
+		try {
+		 userRepository.deleteById(id);
+		}catch (Exception e) {
+			throw new HotelInternalException(e);
+		}
+	}
+
+	@Override
+	public UserDto getByUsernameAndPassword(String id, String password) throws HotelInternalException {
+		UserDto users = null;
+		try {
+			users = userMapper.toDto(userRepository.findByNameAndPassword(id,password));			
+		} catch (Exception e) {
+			throw new HotelInternalException(e);
+		}
+		return users;
+	}
 }

@@ -19,7 +19,6 @@ public class RoleMapper extends AbstractModelMapper<Role, RoleDto, Byte> {
 		RoleDto dto = null;
 		if (isConvertable(entity)) {
 			dto = new RoleDto();
-			dto.setArabicName(entity.getArabicName());
 			dto.setCode(entity.getCode());
 			dto.setEnglishName(entity.getEnglishName());
 			dto.setId(entity.getId());
@@ -32,7 +31,6 @@ public class RoleMapper extends AbstractModelMapper<Role, RoleDto, Byte> {
 		Role entity = null;
 		if (isConvertable(dto)) {
 			entity = new Role();
-			entity.setArabicName(dto.getArabicName());
 			entity.setCode(dto.getCode());
 			entity.setEnglishName(dto.getEnglishName());
 			entity.setId(dto.getId());

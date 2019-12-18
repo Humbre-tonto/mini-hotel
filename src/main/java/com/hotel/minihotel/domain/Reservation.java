@@ -32,7 +32,7 @@ public class Reservation extends DomainEntity<Integer> {
 	private static final long serialVersionUID = 1;
 
 	@Id
-	@SequenceGenerator(name = "ReservationSequence", sequenceName = "RESERVE_SEQ", allocationSize = 1)
+	@SequenceGenerator(name = "ReservationSequence", sequenceName = "RESERVATION_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReservationSequence")
 	@Column(name = "id")
 	private Integer id;

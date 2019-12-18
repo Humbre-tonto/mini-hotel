@@ -1,13 +1,22 @@
+#https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+#regarding the 'off' issue of spring.main.banner-mode please have a look at https://github.com/spring-projects/spring-boot/commit/43b8e65eee7c23a7f7c3b61f8a436dc9cbfe5b96
 server: 
-  port: 8081
+  port: 8089
   servlet:
     context-path: /hotel
-
+   
+    
 app:
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521:orcl
+    url: jdbc:oracle:thin:@192.168.1.90:1521:orcl
     username: hotel
     password: oracle
     pool-properties:
       initial-size: 30
-      max-active: 10
+      max-active: 10    
+  
+  
+
+
+
+              

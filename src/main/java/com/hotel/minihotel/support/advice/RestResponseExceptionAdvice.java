@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -112,12 +111,6 @@ public class RestResponseExceptionAdvice implements Serializable {
     	}
     	
     	return ResponseEntity.status(status).body(helpdeskException);   		    		
-    }
- 
-    @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<AccessDeniedException> handleAccessDeniedException(AccessDeniedException accessDeniedException) {
-    	logger.error(accessDeniedException);
-    	return ResponseEntity.status(HttpStatus.FORBIDDEN).build();    
     }
     
     @ExceptionHandler( HttpRequestMethodNotSupportedException.class)

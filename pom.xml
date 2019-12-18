@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.hotel</groupId>
-	<artifactId>minihotel</artifactId>
+	<groupId>com.informatique.gov</groupId>
+	<artifactId>help-desk</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
@@ -15,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<m2eclipse.wtp.contextRoot>hotel</m2eclipse.wtp.contextRoot>
+		<m2eclipse.wtp.contextRoot>sd</m2eclipse.wtp.contextRoot>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -29,28 +29,31 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-quartz</artifactId>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		<!-- <dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-messaging</artifactId>
+		    <version>4.0.1.release</version>
+		</dependency> -->
 		 <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		 <dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session</artifactId>
-			<version>1.3.2.RELEASE</version>
-		</dependency> 
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
@@ -72,6 +75,16 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.ucm</groupId>
+			<artifactId>ridc</artifactId>
+			<version>12.2.1</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
@@ -86,9 +99,14 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http44</artifactId>
+			<version>1.23.0</version>
+		</dependency>
 	</dependencies>
 	<build>
-		<finalName>hotel-${project.activeProfiles[0].id}-${project.version}</finalName>
+		<finalName>sd-${project.activeProfiles[0].id}-${project.version}</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -148,6 +166,162 @@
 				</plugins>
 			</build>
 		</profile>
-
+		<profile>
+			<id>test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<delete>
+											<fileset
+												dir="${project.build.outputDirectory}/com/informatique/gov/helpdesk/config/"
+												includes="Dev**.class" />
+										</delete>
+										<delete
+											file="${project.build.outputDirectory}/egy-test.yml" />
+										<delete
+											file="${project.build.outputDirectory}/hossam-dev.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-dev.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-staging.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-prod.yml" />
+										<copy file="src/main/resources/env/application.test.yml"
+											tofile="${project.build.outputDirectory}/application.yml" />
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>staging</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<delete>
+											<fileset
+												dir="${project.build.outputDirectory}/com/informatique/gov/helpdesk/config/"
+												includes="Dev**.class" />
+										</delete>
+										<delete
+											file="${project.build.outputDirectory}/egy-test.yml" />
+										<delete
+											file="${project.build.outputDirectory}/hossam-dev.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-dev.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-test.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-prod.yml" />
+										<copy
+											file="src/main/resources/env/application.staging.yml"
+											tofile="${project.build.outputDirectory}/application.yml" />
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<delete>
+											<fileset
+												dir="${project.build.outputDirectory}/com/informatique/gov/helpdesk/config/"
+												includes="Dev**.class" />
+										</delete>
+										<delete
+											file="${project.build.outputDirectory}/egy-test.yml" />
+										<delete
+											file="${project.build.outputDirectory}/hossam-dev.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-dev.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-test.yml" />
+										<delete
+											file="${project.build.outputDirectory}/application-staging.yml" />
+										<copy file="src/main/resources/env/application.prod.yml"
+											tofile="${project.build.outputDirectory}/application.yml" />
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>

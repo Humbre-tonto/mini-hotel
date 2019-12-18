@@ -27,4 +27,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@EntityGraph(value = "User.fat", type = EntityGraphType.FETCH)
 	User findByName(String loginName);
 
+	User findByNameAndPassword(String id, String password);
+
 }

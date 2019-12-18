@@ -87,4 +87,37 @@ public class UserHandlerImpl implements UserHandler {
 		return response;
 	}
 
+	@Override
+	public ResponseEntity<?> deleteById(Integer id) throws HotelInternalException {
+		ResponseEntity<?> response = null;
+
+		try {
+			 userService.deleteById(id);
+			response = (ResponseEntity<?>) ResponseEntity.ok();
+
+		} catch (HotelException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new HotelInternalException(e);
+		}
+
+		return response;
+	}
+
+	@Override
+	public ResponseEntity<?> getByUsernameAndPassword(String id, String password) throws HotelException {
+		// TODO Auto-generated method stub
+		ResponseEntity<?> response = null;
+
+		try {
+			UserDto user= userService.getByUsernameAndPassword(id,password);
+			response = ResponseEntity.ok(user);
+
+		} catch (Exception e) {
+			throw new HotelInternalException(e);
+		}
+
+		return response;
+	}
+
 }

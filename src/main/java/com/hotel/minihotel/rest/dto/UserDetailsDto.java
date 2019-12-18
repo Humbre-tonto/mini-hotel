@@ -19,5 +19,4 @@ public class UserDetailsDto implements Serializable {
 	private String mobileNumber2;
 	private String emailAddress;
 	private Long civilNumber;
-	private AuthenticationTokenDto token;
 }

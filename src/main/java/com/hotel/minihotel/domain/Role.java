@@ -14,7 +14,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "APP_ROLE")
 @Data
-@ToString(of = {"id", "code", "arabicName", "englishName"})
+@ToString(of = {"id", "code", "englishName"})
 @EqualsAndHashCode(of = {"code"}, callSuper = false)
 public class Role extends DomainEntity<Byte> {
 	
@@ -34,6 +34,4 @@ public class Role extends DomainEntity<Byte> {
 	@Column(name = "ENGLISH_NAME")
 	private String englishName;
 	
-	@Column(name = "ARABIC_NAME")
-	private String arabicName;
 }

@@ -15,11 +15,7 @@ public class UserDto implements UserModel<Integer> {
 	private static final long serialVersionUID = 1;
 
 	private Integer id;
-	private String firstName;
-	private String lastName;
 	private RoleDto role;
 	private String loginName;
-	private String email;
-	private String mobile; 
-//	private PetDto	pet;
+	private String password;
 }

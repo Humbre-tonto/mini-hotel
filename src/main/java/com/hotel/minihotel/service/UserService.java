@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.hotel.minihotel.domain.User;
 import com.hotel.minihotel.exception.HotelException;
+import com.hotel.minihotel.exception.HotelInternalException;
 import com.hotel.minihotel.rest.dto.UserDto;
 
 public interface UserService extends Serializable {
@@ -12,4 +13,6 @@ public interface UserService extends Serializable {
 	UserDto register(UserDto userDto) throws HotelException;
 	UserDto getById(Integer id) throws HotelException;
 	UserDto updateById(Integer id, UserDto updatedUser) throws HotelException;
+	void deleteById(Integer id) throws HotelInternalException;
+	UserDto getByUsernameAndPassword(String id, String password) throws HotelInternalException;
 }
