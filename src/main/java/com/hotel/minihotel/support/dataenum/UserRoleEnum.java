@@ -3,7 +3,7 @@ package com.hotel.minihotel.support.dataenum;
 import lombok.Getter;
 
 public enum UserRoleEnum {
-	EMPLOYEE("EMPLOYEE"), HELPDESK_AGENT("HELPDESK_AGENT"), SECTION_HEAD("SECTION_HEAD"), DEPARTMENT_HEAD("DEPARTMENT_HEAD");
+	EMPLOYEE("EMPLOYEE"), ADMIN("ADMIN"), CUSTOMER("CUSTOMER");
 	@Getter
 	private String code;
 	

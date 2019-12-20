@@ -3,19 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.informatique.gov</groupId>
-	<artifactId>help-desk</artifactId>
+	<groupId>com.hotel</groupId>
+	<artifactId>minihotel</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 
-	<name>help-desk</name>
+	<name>hotel</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<m2eclipse.wtp.contextRoot>sd</m2eclipse.wtp.contextRoot>
+		<m2eclipse.wtp.contextRoot>hotel</m2eclipse.wtp.contextRoot>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -106,7 +106,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>sd-${project.activeProfiles[0].id}-${project.version}</finalName>
+		<finalName>hotel-${project.activeProfiles[0].id}-${project.version}</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -193,7 +193,7 @@
 									<tasks>
 										<delete>
 											<fileset
-												dir="${project.build.outputDirectory}/com/informatique/gov/helpdesk/config/"
+												dir="${project.build.outputDirectory}/com/hotel/minihotel/config/"
 												includes="Dev**.class" />
 										</delete>
 										<delete
@@ -245,7 +245,7 @@
 									<tasks>
 										<delete>
 											<fileset
-												dir="${project.build.outputDirectory}/com/informatique/gov/helpdesk/config/"
+												dir="${project.build.outputDirectory}/com/hotel/minihotel/config/"
 												includes="Dev**.class" />
 										</delete>
 										<delete
@@ -298,7 +298,7 @@
 									<tasks>
 										<delete>
 											<fileset
-												dir="${project.build.outputDirectory}/com/informatique/gov/helpdesk/config/"
+												dir="${project.build.outputDirectory}/com/hotel/minihotel/config/"
 												includes="Dev**.class" />
 										</delete>
 										<delete
